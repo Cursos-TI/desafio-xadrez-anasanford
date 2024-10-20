@@ -5,17 +5,52 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    //Variáveis para representar o número de casas que cada peça pode se mover:
+    int casasBispo, casasTorre, casasRainha;
+    char peca;
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    //obs.: no nível iniciante, os movimentos das peças estão padronizados!
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+    //Início do jogo:
+    printf("--- XADREZ ---\n");
+    printf("Escolha qual peça você quer mover: \n");
+    printf("B. Bispo\n");
+    printf("T. Torre\n");
+    printf("R. Rainha\n");
+    printf("Digite o código da peça: ");
+    scanf(" %c", &peca);
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+    //Opções do menu:
+    switch (peca)
+    {
+    case 'B':
+    case 'b':
+        //Movimentação do Bispo (5 casas na diagonal superior direita)
+        printf("-- Bispo --\n");
+        for (casasBispo = 0; casasBispo < 5; casasBispo++) {
+            printf("Direita, cima\n");
+        }
+    break;
+    case 'T':
+    case 't':
+        //Movimentação da Torre (5 casas para a direita)
+        printf("-- Torre --\n");
+        for (casasTorre = 0; casasTorre < 5; casasTorre++) {
+            printf("Direita\n");
+        }
+    break;
+    case 'R':
+    case 'r':
+        //Movimentação da Rainha (8 casas para a esquerda)
+        printf("-- Rainha --\n");
+        for(casasRainha = 0; casasRainha < 8; casasRainha++) {
+            printf("Esquerda\n");
+        }
+    break;
+    default:
+        printf("Opção inválida!\n");
+    break;
+    }
 
     // Nível Aventureiro - Movimentação do Cavalo
     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
