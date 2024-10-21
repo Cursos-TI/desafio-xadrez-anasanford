@@ -6,7 +6,7 @@
 
 int main() {
     //Variáveis para representar o número de casas que cada peça pode se mover:
-    int casasBispo, casasTorre, casasRainha;
+    int casasBispo, casasTorre, casasRainha, casasCavalo;
     char peca;
 
     //obs.: no nível iniciante, os movimentos das peças estão padronizados!
@@ -17,6 +17,7 @@ int main() {
     printf("B. Bispo\n");
     printf("T. Torre\n");
     printf("R. Rainha\n");
+    printf("C. Cavalo\n");
     printf("Digite o código da peça: ");
     scanf(" %c", &peca);
 
@@ -45,6 +46,20 @@ int main() {
         printf("-- Rainha --\n");
         for(casasRainha = 0; casasRainha < 8; casasRainha++) {
             printf("Esquerda\n");
+        }
+    break;
+    case 'C':
+    case 'c':
+        //movimentação do cavalo (em L = esquerda e baixo = EEB,EBB,BBE,BEE)
+        printf("-- Cavalo -- \n");
+        for(int y = 0; y < 1; y++) { //movimento cima baixo
+            int x = 0; //movimento esquerda direita
+            while (x <= 1)
+            {
+                printf("Esquerda\n");
+                x++;
+            }
+            printf("Baixo\n");
         }
     break;
     default:
