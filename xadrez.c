@@ -63,7 +63,7 @@ int main() {
     case 'c':
         //movimentação do cavalo (em L = esquerda e baixo) => loops com variáveis ou condições múltiplas
         printf("-- Cavalo -- \n");
-        for(int y = 0, x = 0; y < 1 && x <= 1; y++, x++) {
+        for(int y = 0, x = 0; y < 1 && x <= 1; y++, x++) { //y: movimento para baixo; x: movimento para esquerda
             while (x <= 1)
             {
                 printf("Esquerda\n");
