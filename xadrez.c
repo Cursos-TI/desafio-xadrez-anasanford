@@ -1,15 +1,19 @@
 #include <stdio.h>
-
 // Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+
+void movimentoRainhaTorre(int m, char p[10]) {
+    if(m > 0) {
+        printf("%s \n", p);
+        movimentoRainhaTorre(m - 1, p);
+    }
+}
 
 int main() {
     //Variáveis para representar o número de casas que cada peça pode se mover:
-    int casasBispo, casasTorre, casasRainha, casasCavalo;
+    int casasCavalo;
     char peca;
 
-    //obs.: no nível iniciante, os movimentos das peças estão padronizados!
+    //obs.: os movimentos das peças estão padronizados!
 
     //Início do jogo:
     printf("--- XADREZ ---\n");
@@ -26,38 +30,45 @@ int main() {
     {
     case 'B':
     case 'b':
-        //Movimentação do Bispo (5 casas na diagonal superior direita)
+        //Movimentação do Bispo (5 casas na diagonal superior direita) => transformada em loops aninhados
         printf("-- Bispo --\n");
-        for (casasBispo = 0; casasBispo < 5; casasBispo++) {
-            printf("Direita, cima\n");
+        for (int bispoDireita = 0; bispoDireita < 5; bispoDireita++) {
+            for (int bispoCima = 0; bispoCima < 1; bispoCima++)
+            {
+                printf("Cima, ");
+            }           
+            printf("Direita\n");
         }
     break;
     case 'T':
     case 't':
-        //Movimentação da Torre (5 casas para a direita)
+        //Movimentação da Torre (5 casas para a direita) => recursividade junto c/ rainha
+        int casasTorre = 5;
+        char direcaoTorre[10];
+        direcaoTorre[10] = "Direita";
         printf("-- Torre --\n");
-        for (casasTorre = 0; casasTorre < 5; casasTorre++) {
-            printf("Direita\n");
-        }
+        movimentoRainhaTorre(casasTorre, direcaoTorre);
+
     break;
     case 'R':
     case 'r':
-        //Movimentação da Rainha (8 casas para a esquerda)
+        //Movimentação da Rainha (8 casas para a esquerda) => recursividade junto c/ a torre
+        int casasRainha = 8;
+        char direcaoRainha[10];
+        direcaoRainha[10] = "Esquerda";
         printf("-- Rainha --\n");
-        for(casasRainha = 0; casasRainha < 8; casasRainha++) {
-            printf("Esquerda\n");
-        }
+        movimentoRainhaTorre(casasRainha, direcaoRainha);
     break;
     case 'C':
     case 'c':
-        //movimentação do cavalo (em L = esquerda e baixo = EEB,EBB,BBE,BEE)
+        //movimentação do cavalo (em L = esquerda e baixo) => loops com variáveis ou condições múltiplas
         printf("-- Cavalo -- \n");
-        for(int y = 0; y < 1; y++) { //movimento cima baixo
-            int x = 0; //movimento esquerda direita
+        for(int y = 0, x = 0; y < 1 && x <= 1; y++, x++) {
             while (x <= 1)
             {
                 printf("Esquerda\n");
                 x++;
+                if(x == 2) {continue;}
             }
             printf("Baixo\n");
         }
@@ -66,17 +77,6 @@ int main() {
         printf("Opção inválida!\n");
     break;
     }
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
 
     return 0;
 }
